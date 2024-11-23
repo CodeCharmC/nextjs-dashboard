@@ -1,7 +1,42 @@
 .shape {
-   height: 0;
-   width: 0;
-   border-bottom: 30px solid black;
-   border-left: 20px solid transparent;
-   border-right: 20px solid transparent;
+  height: 0;
+  width: 0;
+
+  border-bottom: 30px solid black;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
 }
+
+.flower {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ 
+ .petal {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  border: 30px solid transparent;
+  border-top-color: palevioletred; /* Petal color */
+  transform-origin: bottom center;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg) translateY(-13px); }
+.petal:nth-child(2) { transform: rotate(72deg) translateY(-13px); }
+.petal:nth-child(3) { transform: rotate(144deg) translateY(-13px); }
+.petal:nth-child(4) { transform: rotate(216deg) translateY(-13px); }
+.petal:nth-child(5) { transform: rotate(288deg) translateY(-13px); }
+ 
+.center {
+  width: 20px;
+  height: 20px;
+  background-color: yellow;
+  border-radius: 50%;
+  position: absolute;
+}
+ 
