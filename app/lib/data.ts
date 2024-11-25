@@ -50,6 +50,7 @@ export async function fetchCardData() {
          SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
          FROM invoices`;
 
+    //Parallel data fetching
     const data = await Promise.all([
       invoiceCountPromise,
       customerCountPromise,
