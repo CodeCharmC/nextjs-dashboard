@@ -1,6 +1,5 @@
 'use server';
 
-// import Zod and define a schema that matches the shape of the form object. This schema will validate the formData before saving it to a database.
 import { z } from 'zod';
  
 const FormSchema = z.object({
@@ -19,7 +18,5 @@ export async function createInvoice(formData: FormData) {
     amount: formData.get('amount'),
     status: formData.get('status'),
   });
-  // Test it out:
-  //console.log(rawFormData);
-  //console.log(typeof rawFormData.amount);
+  const amountInCents = amount * 100;
 }
