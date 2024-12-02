@@ -17,3 +17,9 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0;
 }
 
+input:-webkit-autofill {
+  background-color: #fff !important;
+  color: #000;
+  -webkit-text-fill-color: #000;
+  transition: background-color 5000s ease-in-out 0s;
+}
