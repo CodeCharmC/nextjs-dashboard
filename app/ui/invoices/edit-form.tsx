@@ -24,7 +24,22 @@ export default function EditInvoiceForm({
   const [state, formAction] = useActionState(updateInvoiceWithId, initialState);
 
   return (
-    <form action={formAction}>      
+    <form action={formAction}>
+      {/* Display messages or errors */}
+      {state.message && (
+        <div className="mb-4 rounded-md bg-blue-50 p-3 text-blue-700">
+          {state.message}
+        </div>
+      )}
+      {state.errors && Object.keys(state.errors).length > 0 && (
+        <div className="mb-4 rounded-md bg-red-50 p-3 text-red-700">
+          {Object.entries(state.errors).map(([field, messages]) => (
+            <div key={field}>
+              <strong>{field}:</strong> {messages?.join(', ')}
+            </div>
+          ))}
+        </div>
+      )}
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
