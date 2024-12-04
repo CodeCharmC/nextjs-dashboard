@@ -18,7 +18,7 @@ export default function Page() {
             <a href="#" className="text-amber-400 hover:text-amber-200">
               flower arranging
             </a>
-            , let's bloom together!" 💐✨
+            , let&apos;s bloom together!💐✨
           </p>
           <Link
             href="/login"
