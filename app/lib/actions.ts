@@ -48,7 +48,6 @@ export async function authenticate(
           return 'Something went wrong.';
       }
     }
-    throw error;
   }
 }
  
@@ -76,6 +75,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
     `;
   } catch (error) {
+    console.error('Database Error:', error);
     return {
       message: 'Database Error: Failed to Create Invoice.',
     };
@@ -108,6 +108,7 @@ export async function updateInvoice(id: string,  prevState: State, formData: For
       WHERE id = ${id}
     `;
   } catch (error) {
+    console.error('Database Error:', error);
     return {
       message: 'Database Error: Failed to Update Invoice.',
     };
@@ -125,6 +126,7 @@ export async function deleteInvoice(id: string) {
       message: 'Invoice deleted successfully.',
     };
   } catch (error) {
+    console.error('Database Error:', error);
     return {
       message: 'Database Error: Failed to Delete Invoice.',
     };
