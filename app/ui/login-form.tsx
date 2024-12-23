@@ -10,15 +10,30 @@ import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 import { useActionState } from 'react';
 import { authenticate } from '@/app/lib/actions';
+import { useRouter } from 'next/navigation'; 
+import { useState } from 'react';
 
 export default function LoginForm() {
+  const router = useRouter(); 
   const [errorMessage, formAction, isPending] = useActionState(
     authenticate,
     undefined,
   );
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); 
+    const formData = new FormData(event.currentTarget); 
+    const errorMessage = await authenticate(undefined, formData);
+    if (errorMessage) {
+      setError(errorMessage); 
+    } else {
+      router.push('/dashboard');
+    }
+  };
 
   return (
-    <form action={formAction} className="space-y-3">
+    <form onSubmit={handleSubmit} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
         <h1 className={`${lusitana.className} mb-3 text-2xl`}>
           Please log in to continue.

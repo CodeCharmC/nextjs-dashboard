@@ -39,6 +39,20 @@ export async function authenticate(
 ) {
   try {
     await signIn('credentials', formData);
+    const result = await signIn('credentials', {
+      redirect: false,
+      callbackUrl: '/dashboard', 
+      formData,
+    });
+
+    if (result?.ok) {
+      redirect('/dashboard');  
+    }
+
+    if (!result?.ok) {
+      redirect('/');
+      return 'Invalid credentials.'; 
+    }
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
