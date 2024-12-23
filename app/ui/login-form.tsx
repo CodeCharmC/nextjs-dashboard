@@ -17,9 +17,14 @@ export default function LoginForm() {
   const router = useRouter(); 
   const [errorMessage, formAction, isPending] = useActionState(
     authenticate,
-    undefined,
+    undefined,    
   );
   const [error, setError] = useState<string | null>(null);
+
+  console.log('formAction', formAction);  //sooo not good )_( 
+  if (error) {
+    console.log('error', error);
+  }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); 
